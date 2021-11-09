@@ -1,0 +1,333 @@
+   第一讲第一节∶移动光标
+
+00000000000000000000000000000000000000000000000000000000000000
+000*000*000000*0000*0000000 0000*00*00000 00000*00000*       0
+000 000      0 00   0000000 0000 00       00000 000000000000 0
+000   000000 0    000        000 00000000 00000              0
+00000 0*   0 0  000000000000 000 00000000 00    000000000000 0
+0000  0000 0 0  00*       00 00  0      0 00 000000000       0
+0000 00000 0 0  000000000 00 00 0  000000 00 000000000 00000 0
+0000 00000 0 00 00*   00  00 0  0         00 0*        00 *0 0
+0000         00 00000 00 00000 000 000000000 000000000000 00 0
+000000000 00000 000   00   000 000 000000000 000000000000    0
+0         00000 000 000000 000      00000000 0000*000000000 00
+0 0000000 00000 000 0*  00 000 0000 000      0000 000000000 00
+0 00   00 00000 000 000 00 000 0000 000 0000000   00000000  00
+0 00 0 00       000 000 00     0000     000000  00000      000
+0 00*0 000000000000 000 00000000000 000 00000  000000 00000000
+0 0000 000000000000 000 00000000000 000       0000000 00000000
+0           0000000 000      000000 00000000000000000        0
+00000000000         00000000        000000000      000000000 0
+00 *0000000 0000 0000000000000000000000000000 0000 0000*   0 0
+00 00       0000 00000000000000000000000      0000 0000000 0 0
+00    0000000000                         000000000           0
+00000000000000000000000000 start 00000000000000000000000000000
+00000000000000000000000000000*00000000000000000000000000000000
+--->
+
+迷宫小游戏：
+把光标移动到--->处，向上搜索*号(?*),此时迷宫中的*应该会被着色，如果没有，请按输入:set hlsearch 高亮搜索结果
+然后从start下面的*开始，使用hjkl在空格中移动，把迷宫中所有的*替换(r)成空格。
+（输入:set nohlsearch可以关闭搜索高亮）
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   第一讲第二节∶VIM的进入和退出
+
+  末行模式关闭文件
+  :q  退出
+  :wq 保存并退出
+  :q! 不保存并退出
+  :w 保存
+  :w! 强行保存
+  :wq 相当于 :x
+
+  编辑模式下退出
+  ZZ: 保存并退出
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   第一讲第三节∶文本编辑之删除
+
+
+   ** 在正常(Normal)模式下，可以按下 x 键来删除光标所在位置的字符。**
+参照下面的句子修改上面的句子，使上下一致：(配合w、e、0、$、b、B等移动指令来移动光标，提高速度)
+
+Great miinds haave purrpose, oothers havee wisshes.
+Great minds have purpose, others have wishes.
+
+If you fiind aa path wiith noo obsttaclles, it prrobabbly dooesn’t leead annywhere.
+If you find a path with no obstacles, it probably doesn’t lead anywhere.
+
+Sommmetimes yoour pllans don’t wwwork out bbecause God haas betterr ones.
+Sometimes your plans don’t work out because God has better ones.
+
+You caan’t have aa better tomorrow if yyou doon’t sttop thinking aboout yesteerday.
+You can’t have a better tomorrow if you don’t stop thinking about yesterday.
+ 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       第一讲第四节∶文本编辑之插入
+
+   ** 在正常(Normal)模式下，可以按下 i 键来在光标所在位置插入字符。**
+参照下面的句子修改上面的句子，使上下一致：((配合w、e、0、$、b、B等移动指令来移动光标，提高速度)
+
+Gat mi have pu, others h whes.
+Great minds have purpose, others have wishes.
+
+If y find a p wi no obsta, it pro doesn’t le an.
+If you find a path with no obstacles, it probably doesn’t lead anywhere.
+
+Som your pl don’t work out be God has be ones.
+Sometimes your plans don’t work out because God has better ones.
+
+You can’t h a b tom if you don’t stop thin ab yest.
+You can’t have a better tomorrow if you don’t stop thinking about yesterday.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   第二讲第一节∶删除类命令
+
+
+     ** 输入 dw 可以从光标处删除至一个单字/单词的末尾。**
+
+  练习：搜索并删除下列句子中的“”HAHA“”（不区分大小写）
+
+Great minds have HAHa purpose, others hAHA have wishes.
+
+If you find a path with no HaHA obstacles, it probably HAHA doesn’t lead anywhere.
+
+Sometimes HAaA your plans don’t work out because HAHA God has better ones.
+
+You can’t have a better HaHA tomorrow if you don’t stop thinking HAhA about yesterday. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        第二讲第二节∶其他删除类命令
+
+   ** 输入 d$ 从当前光标删除到行末,d^从当前光标到行首**
+
+    练习：删除每行中第一个，后的内容，删除后通过撤销恢复原状，然后删除每一行第一个，前的内容。
+
+   Somebody typed the end of this line twice, end of this line twice.
+
+   Great minds have purpose, others have wishes.
+
+   If you find a path with no obstacles, it probably doesn’t lead anywhere.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       第二讲第三节∶关于命令和对象
+
+  删除命令 d 的格式如下∶
+
+  [number]   d object     或者     d  [number]   object
+
+  一个简短的对象列表∶
+    w - 从当前光标当前位置直到单字/单词末尾，包括空格。
+    e - 从当前光标当前位置直到单字/单词末尾，但是 *不* 包括空格。
+    $ - 从当前光标当前位置直到当前行末。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  第二讲第四节∶对象命令的特殊情况
+
+
+        ** 输入 dd 可以删除整一个当前行。 **
+
+  1. 请将光标移动到本节中下面的短句段落中的第二行。
+  2. 输入 dd 删除该行。
+  3. 然后移动到第四行。
+  4. 接着输入 2dd 删除两行。
+
+      1)  Roses are red,
+      2)  Mud is fun,
+      3)  Violets are blue,
+      4)  I have a car,
+      5)  Clocks tell time,
+      6)  Sugar is sweet
+      7)  And so are you.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    第二讲第五节∶撤消类命令
+
+  ** 输入 u 来撤消最后执行的命令，输入 U 来修正整行,CTRL-R撤销掉撤销动作**
+
+  练习：修正句子中的错误，修正好后使用U来恢复一整行。
+
+---> Fiix the errors oon thhis line and reeplace them witth undo.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    第三讲第一节∶置入类命令
+
+
+        ** 输入 p 将最后一次删除的内容置入光标之后 **
+
+    将所有的行依序放置到正确的位置上。
+
+     d) Can you learn too?
+     b) Violets are blue,
+     c) Intelligence is learned,
+     a) Roses are red,
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         第三讲第二节∶替换类命令
+    请练习第一讲第一节
+    r:替换单字符
+    R:进入替换模式
+ 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   第三讲第三节∶更改类命令
+
+
+   ** 要改变一个单字/单词的部分或者全部，请输入 cw **
+
+   练习：修正下列错误
+
+---> This lubw has a few wptfd that mrrf changing usf the change command.
+---> This line has a few words that need changing using the change command.
+
+ 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         第三讲第四节∶使用c指令的其他更改类命令
+
+      ** 更改类指令可以使用同删除类命令所使用的对象参数。**
+         cc剪切一行并进入编辑模式
+
+    练习：使用 c$ 使得该行剩下的部分更正得同第二行一样。
+
+---> The end of this line needs some help to make it like the second.
+---> The end of this line needs to be corrected using the  c$  command.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       第四讲第一节∶定位及文件状态
+
+    vim +# :打开文件，并定位于第#行 
+    vim +  :打开文件，定位至最后一行
+    vim +/PATTERN :打开文件，定位至第一次被PATTERN匹配到的行的行首
+    #G:跳转至第#行
+    G:最后一行
+    gg:第一行
+ 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   第四讲第二节∶搜索类命令
+
+
+     ** 输入 / 以及尾随的字符串可以用以在当前文件中查找该字符串。 输入？向上查找**
+
+    练习：找出errroor，并改为error。
+
+---> When the search reaches the end of the file it will continue at the start.
+
+  "errroor" is not the way to spell error;  errroor is an error.
+
+ 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     第四讲第三节∶配对括号的查找
+
+
+       ** 按 % 可以查找配对的括号 )、]、}。**
+
+---> This ( is a test line with ('s, ['s ] and {'s } in it. ))
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        第四讲第四节∶修正错误的方法之一
+
+
+  ** 输入 :s/old/new/g 可以替换 old 为 new。**
+
+   练习：把thee替换为HEHE
+
+---> the best time to see thee flowers is in thee spring.
+
+  要替换两行之间出现的每个匹配串，请输入 :#,#s/old/new/g (#,#代表的是
+  两行的行号)。输入 :%s/old/new/g 则是替换整个文件中的每个匹配串。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  第五讲第一节∶在 VIM 内执行外部命令的方法
+
+
+    ** 输入 :! 然后紧随著输入一个外部命令可以执行该外部命令。**
+
+    练习：
+      :!dir
+      :!ls 
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        第五讲第二节∶关于保存文件的更多信息
+
+
+      ** 要将对文件的改动保存到文件中，请输入 :w FILENAME 。**
+      
+      练习：把当前文件另存为VIMTEST到家目录。并通过在VIM内执行外部命令删除它。
+ 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      第五讲第三节∶一个具有选择性的保存命令
+
+
+      ** 要保存文件的部分内容，请输入 :#,# w FILENAME **
+ 
+      练习：把当前文件的40-50行保存到家目录的VIMTEST，并且通过在VIM内执行外部部命令cat该文件。
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     第五讲第四节∶提取和合并文件
+
+
+     ** 要向当前文件中插入另外的文件的内容，请输入 :r FILENAME **
+
+     练习：把第五讲第三节的VIMTEST文件插入到该行的下一行,并删除VIMTEST。
+
+ 
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    第六讲第一节∶打开类命令
+
+
+    ** 输入 o 将在光标的下方打开新的一行并进入插入模式。**
+
+    练习：在下面的句子上/下一行前面插入“”Hello World！“”
+
+    Open up a line above this by typing Shift-O while the cursor is on this line.
+ 
+ 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   第六讲第二节∶光标后插入类命令
+
+
+       ** 输入 a 将可在光标之后插入文本。 **
+
+---> This line will allow you to practice
+---> This line will allow you to practice appending text to the end of a line.
+
+ 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      第六讲第三节∶另外一个置换类命令的版本
+
+
+        ** 输入大写的 R 可连续替换多个字符。**
+
+---> To make the first line the same as the last on this page use the keys.
+---> To make the first line the same as the second, type R and the new text.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      翻页操作
+
+   Ctrl+f: 向下翻一屏
+   Ctrl+b: 向上翻一屏
+
+   Ctrl+d: 向下翻半屏
+   Ctrl+u: 向上翻半屏
+   
+   练习：通过翻页操作，把第100行、200行、300行复制到该行下面。
+
