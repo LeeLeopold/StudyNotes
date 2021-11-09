@@ -6,7 +6,7 @@
 
 ###### Linux世界里，一切皆文件
 
-![1_目录结构](D:\Github\StudyNotes\Linux\images\1_目录结构.png)
+![1_目录结构](images/1_目录结构.png)
 
 - /bin：是Binary的缩写，这个目录存放着最经常使用的命令。
 - /sbin：s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。
@@ -33,7 +33,7 @@
 
 ###### bin、lib、lib64、sbin目录是软连接目录
 
-![1_目录结构关系](D:\Github\StudyNotes\Linux\images\1_目录结构关系.png)
+![1_目录结构关系](images/1_目录结构关系.png)
 
 
 
@@ -54,13 +54,13 @@
 
 ###### 端口与协议设置
 
-![2_xftp_配置1](D:\Github\StudyNotes\Linux\images\2_xftp_配置1.png)
+![2_xftp_配置1](/images/2_xftp_配置1.png)
 
 
 
 ###### 乱码设置
 
-![2_xftp_配置2](D:\Github\StudyNotes\Linux\images\2_xftp_配置2.png)
+![2_xftp_配置2](/images/2_xftp_配置2.png)
 
 
 
